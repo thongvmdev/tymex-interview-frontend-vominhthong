@@ -4,20 +4,23 @@ import FormFilter from '~/components/molecules/FormFilter'
 import markerPlaceStyles from './Marketplace.module.scss'
 import ProductList from '~/components/molecules/ProductList'
 import ProductCategory from '~/components/molecules/ProductCategory'
+import useActions from './hooks/useActions'
 
 const Marketplace = () => {
+  const { data, loading, form, handleLoadMore, isLoadMore, getList } = useActions()
+
   return (
     <>
       <CoverImage />
       <Row gutter={[40, 40]} className={markerPlaceStyles.marketplaceContent}>
         <Col xs={24} lg={7}>
-          <FormFilter />
+          <FormFilter form={form} onGetList={getList} />
         </Col>
 
         <Col xs={24} lg={17}>
           <Flex gap={40} vertical>
             <ProductCategory />
-            <ProductList />
+            <ProductList data={data} onLoadMore={handleLoadMore} loading={loading} isLoadMore={isLoadMore} />
           </Flex>
         </Col>
       </Row>

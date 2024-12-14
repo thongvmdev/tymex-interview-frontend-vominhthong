@@ -1,16 +1,14 @@
 import Icon, { SearchOutlined } from '@ant-design/icons'
-import type { FormProps } from 'antd'
+import type { FormInstance, FormProps } from 'antd'
 import { Flex, Form, Input, Select, Slider, Typography } from 'antd'
 import Button from '~/components/atoms/Button'
 
 import formFilterSearchStyles from './FormFilter.module.scss'
+import { FieldType } from '~/interfaces/formFilter'
 
-type FieldType = {
-  title: string
-  price: [number, number]
-  tier: string
-  theme: string
-  time: string
+interface FormFilterProps {
+  form: FormInstance
+  onGetList: () => Promise<void>
 }
 
 const ResetFilterIcon = () => (
@@ -24,101 +22,99 @@ const ResetFilterIcon = () => (
   </svg>
 )
 
-const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-  console.log('Success:', values)
+const FormFilter = ({ form, onGetList }: FormFilterProps) => {
+  const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+    onGetList()
+  }
+
+  return (
+    <Form
+      form={form}
+      name='filter-product'
+      layout='vertical'
+      labelCol={{ span: 8 }}
+      style={{ maxWidth: 400 }}
+      initialValues={{ remember: true }}
+      onFinish={onFinish}
+      autoComplete='off'
+    >
+      <Form.Item<FieldType> name='title'>
+        <Input
+          className={formFilterSearchStyles.quickSearch}
+          prefix={<SearchOutlined className={formFilterSearchStyles.prefixIconQuickSearch} />}
+          placeholder='Quick Search'
+        />
+      </Form.Item>
+
+      <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='price' label='PRICE'>
+        <Slider range min={0} max={200} defaultValue={[20, 50]} />
+      </Form.Item>
+
+      <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='tier' label='TIER'>
+        <Select
+          className={formFilterSearchStyles.formSelect}
+          defaultValue='lucy'
+          disabled // TODO: Handle later
+          options={[
+            { value: 'jack', label: 'Jack' },
+            { value: 'lucy', label: 'Lucy' },
+            { value: 'Yiminghe', label: 'yiminghe' }
+          ]}
+        />
+      </Form.Item>
+
+      <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='theme' label='THEME'>
+        <Select
+          className={formFilterSearchStyles.formSelect}
+          defaultValue='lucy'
+          disabled // TODO: Handle later
+          options={[
+            { value: 'jack', label: 'Jack' },
+            { value: 'lucy', label: 'Lucy' },
+            { value: 'Yiminghe', label: 'yiminghe' }
+          ]}
+        />
+      </Form.Item>
+
+      <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='time' label='TIME'>
+        <Select
+          className={formFilterSearchStyles.formSelect}
+          defaultValue='lucy'
+          disabled // TODO: Handle later
+          options={[
+            { value: 'jack', label: 'Jack' },
+            { value: 'lucy', label: 'Lucy' },
+            { value: 'Yiminghe', label: 'yiminghe' }
+          ]}
+        />
+      </Form.Item>
+
+      <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='price' label='PRICE'>
+        <Select
+          className={formFilterSearchStyles.formSelect}
+          defaultValue='lucy'
+          disabled // TODO: Handle later
+          options={[
+            { value: 'jack', label: 'Jack' },
+            { value: 'lucy', label: 'Lucy' },
+            { value: 'Yiminghe', label: 'yiminghe' }
+          ]}
+        />
+      </Form.Item>
+
+      <Form.Item>
+        <Flex align='center' gap={24}>
+          <Button className={formFilterSearchStyles.resetBtn} type='text'>
+            <Icon component={ResetFilterIcon} />
+            <Typography.Text>Reset Filter</Typography.Text>
+          </Button>
+          <Button className={formFilterSearchStyles.submitBtn} color='secondary' type='primary' htmlType='submit'>
+            Search
+          </Button>
+        </Flex>
+      </Form.Item>
+    </Form>
+  )
 }
-
-const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
-  console.log('Failed:', errorInfo)
-}
-
-const FormFilter = () => (
-  <Form
-    name='filter-product'
-    layout='vertical'
-    labelCol={{ span: 8 }}
-    style={{ maxWidth: 400 }}
-    initialValues={{ remember: true }}
-    onFinish={onFinish}
-    onFinishFailed={onFinishFailed}
-    autoComplete='off'
-  >
-    <Form.Item<FieldType> name='title'>
-      <Input
-        className={formFilterSearchStyles.quickSearch}
-        prefix={<SearchOutlined className={formFilterSearchStyles.prefixIconQuickSearch} />}
-        placeholder='Quick Search'
-      />
-    </Form.Item>
-
-    <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='price' label='PRICE'>
-      <Slider range min={0} max={200} defaultValue={[20, 50]} />
-    </Form.Item>
-
-    <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='tier' label='TIER'>
-      <Select
-        className={formFilterSearchStyles.formSelect}
-        defaultValue='lucy'
-        options={[
-          { value: 'jack', label: 'Jack' },
-          { value: 'lucy', label: 'Lucy' },
-          { value: 'Yiminghe', label: 'yiminghe' },
-          { value: 'disabled', label: 'Disabled', disabled: true }
-        ]}
-      />
-    </Form.Item>
-
-    <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='theme' label='THEME'>
-      <Select
-        className={formFilterSearchStyles.formSelect}
-        defaultValue='lucy'
-        options={[
-          { value: 'jack', label: 'Jack' },
-          { value: 'lucy', label: 'Lucy' },
-          { value: 'Yiminghe', label: 'yiminghe' },
-          { value: 'disabled', label: 'Disabled', disabled: true }
-        ]}
-      />
-    </Form.Item>
-
-    <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='time' label='TIME'>
-      <Select
-        className={formFilterSearchStyles.formSelect}
-        defaultValue='lucy'
-        options={[
-          { value: 'jack', label: 'Jack' },
-          { value: 'lucy', label: 'Lucy' },
-          { value: 'Yiminghe', label: 'yiminghe' },
-          { value: 'disabled', label: 'Disabled', disabled: true }
-        ]}
-      />
-    </Form.Item>
-
-    <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='price' label='PRICE'>
-      <Select
-        className={formFilterSearchStyles.formSelect}
-        defaultValue='lucy'
-        options={[
-          { value: 'jack', label: 'Jack' },
-          { value: 'lucy', label: 'Lucy' },
-          { value: 'Yiminghe', label: 'yiminghe' },
-          { value: 'disabled', label: 'Disabled', disabled: true }
-        ]}
-      />
-    </Form.Item>
-
-    <Form.Item>
-      <Flex align='center' gap={24}>
-        <Button className={formFilterSearchStyles.resetBtn} type='text'>
-          <Icon component={ResetFilterIcon} />
-          <Typography.Text>Reset Filter</Typography.Text>
-        </Button>
-        <Button className={formFilterSearchStyles.submitBtn} color='secondary' type='primary' htmlType='submit'>
-          Search
-        </Button>
-      </Flex>
-    </Form.Item>
-  </Form>
-)
 
 export default FormFilter

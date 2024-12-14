@@ -1,9 +1,29 @@
+@import '~/styles';
+
 .btnViewMore {
   &:global {
     &.ant-btn {
       width: 326px;
       height: 70px;
       padding: 23px 0px;
+    }
+  }
+}
+
+.spin {
+  &:global {
+    &.ant-spin .ant-spin-dot-spin {
+      color: $primary-color;
+    }
+  }
+}
+
+.empty {
+  &:global {
+    &.ant-empty {
+      .ant-empty-description {
+        color: #fff;
+      }
     }
   }
 }
