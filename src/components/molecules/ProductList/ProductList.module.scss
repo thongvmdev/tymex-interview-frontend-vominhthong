@@ -1,0 +1,9 @@
+.btnViewMore {
+  &:global {
+    &.ant-btn {
+      width: 326px;
+      height: 70px;
+      padding: 23px 0px;
+    }
+  }
+}

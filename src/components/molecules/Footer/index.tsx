@@ -1,7 +1,6 @@
-import { Row, Col, Typography, Layout, Space, Flex, Divider } from 'antd'
+import { Row, Col, Typography, Layout, Space, Flex, Divider, Input } from 'antd'
 import footerStyles from './Footer.module.scss'
 import Button from '~/components/atoms/Button'
-import Input from '~/components/atoms/Input'
 import { MailOutlined, PhoneOutlined } from '@ant-design/icons'
 
 const { Title, Text } = Typography
