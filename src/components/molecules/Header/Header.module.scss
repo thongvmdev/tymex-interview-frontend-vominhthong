@@ -1,0 +1,89 @@
+@import '~/styles';
+
+@mixin blurBackground() {
+  background: rgba(23, 22, 26, 0.7) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+.gnb {
+  &:global {
+    &.ant-layout-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 0;
+      height: auto;
+      z-index: 800;
+      @include blurBackground();
+    }
+  }
+}
+
+.header {
+  padding: 0 20px;
+
+  @include responsive('xxl') {
+    padding: 0 160px 0 304px;
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include responsive('lg') {
+    gap: 60px;
+    flex-direction: row;
+  }
+
+  .menu-item {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: 'Drone Ranger Pro';
+    line-height: 18px;
+    font-size: 14px;
+    font-style: normal;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    @include responsive('md') {
+      font-weight: 700;
+      line-height: 20px;
+    }
+  }
+}
+
+.drawerMenu {
+  &:global {
+    &.ant-drawer-content {
+      @include blurBackground();
+    }
+  }
+}
+
+.colorIcon {
+  color: #fff;
+}
+
+.active {
+  color: $primary-color !important;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    width: 16px;
+    background-color: $primary-color;
+    transition: width 0.3s ease;
+    display: block;
+  }
+}
