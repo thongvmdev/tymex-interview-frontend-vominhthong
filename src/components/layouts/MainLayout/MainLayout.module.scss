@@ -1,0 +1,19 @@
+@import '~/styles';
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  background-image: url('~/assets/images/content-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.decoration {
+  margin-top: 48px;
+}

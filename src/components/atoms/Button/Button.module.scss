@@ -1,0 +1,22 @@
+@import '~/styles';
+
+.secondary:not(:global(.ant-btn-dangerous)) {
+  background: $secondary-background-gradient;
+  color: #fff;
+  border: none;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)), $secondary-background-gradient;
+    color: #fff;
+  }
+
+  &:disabled {
+    color: #fff;
+    opacity: 0.5;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}

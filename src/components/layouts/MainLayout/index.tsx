@@ -1,16 +1,23 @@
+import React from 'react'
+import mainLayoutStyles from './MainLayout.module.scss'
+import Header from '~/components/molecules/Header'
 import { Outlet } from 'react-router-dom'
+import { Image, Layout } from 'antd'
+import Footer from '~/components/molecules/Footer'
+import decorationImg from '~/assets/images/decoration.png'
 
-// import mainLayoutStyles from './MainLayout.module.scss'
+const { Content } = Layout
 
-const MainLayout = () => {
+const MainLayout: React.FC = () => {
   return (
-    <div>
-      <header>Header</header>
-      <main>
+    <Layout className={mainLayoutStyles.layout}>
+      <Header />
+      <Content className={mainLayoutStyles.content}>
         <Outlet />
-      </main>
-      <footer>Footer</footer>
-    </div>
+        <Image className={mainLayoutStyles.decoration} preview={false} src={decorationImg} />
+      </Content>
+      <Footer />
+    </Layout>
   )
 }
 
