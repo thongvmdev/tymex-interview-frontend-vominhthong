@@ -18,13 +18,15 @@ export interface GetMarketPlaceParams extends MarketPlacePaging {
   _order?: SortOrder
 }
 
+type AuthorStatus = 'online' | 'offline' | 'busy' | 'idle'
+
 export interface IAuthor {
   firstName: string
   lastName: string
   email: string
   gender: string
   avatar: string
-  onlineStatus: string
+  onlineStatus: AuthorStatus
 }
 
 export interface IProduct {
@@ -38,6 +40,8 @@ export interface IProduct {
   tier: 'Basic' | 'Premium' | 'Deluxe'
   imageId: number // 1 -> 20 (integer)
   author: IAuthor
+  backgroundColor: string
+  ethPath: string
 }
 
 export interface FieldType {

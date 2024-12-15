@@ -1,5 +1,14 @@
 @import '~/styles';
 
+.wrapper {
+  margin: auto;
+  max-width: 70vw;
+
+  @include responsive('lg') {
+    max-width: 100%;
+  }
+}
+
 .quickSearch {
   &:global {
     &.ant-input-affix-wrapper {
@@ -87,8 +96,12 @@
   &:global {
     &.ant-btn {
       padding: 10px 56px 10px 57px;
-      width: 168px;
+      width: 100px;
       height: 44px;
+
+      @include responsive('xl') {
+        width: 168px;
+      }
     }
   }
 }
