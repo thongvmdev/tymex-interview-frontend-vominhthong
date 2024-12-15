@@ -7,7 +7,13 @@ export const API_ROOT = import.meta.env.VITE_API_ROOT
 const httpClient = axios.create({
   baseURL: API_ROOT,
   paramsSerializer: (params) => {
-    return qs.stringify(params)
+    const filteredParams = Object.fromEntries(
+      Object.entries(params).filter(([_, value]) => {
+        return value !== undefined && value !== ''
+      })
+    )
+
+    return qs.stringify(filteredParams)
   }
 })
 

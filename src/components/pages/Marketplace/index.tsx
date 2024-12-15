@@ -14,7 +14,7 @@ const Marketplace = () => {
       <CoverImage />
       <Row gutter={[40, 40]} className={markerPlaceStyles.marketplaceContent}>
         <Col xs={24} lg={7}>
-          <FormFilter form={form} onGetList={getList} />
+          <FormFilter form={form} onGetList={getList} loading={loading} />
         </Col>
 
         <Col xs={24} lg={17}>

@@ -4,12 +4,17 @@ import { Flex, Form, Input, Select, Slider, Typography } from 'antd'
 import Button from '~/components/atoms/Button'
 
 import formFilterSearchStyles from './FormFilter.module.scss'
-import { FieldType } from '~/interfaces/formFilter'
+import { priceSortOpts, themeOpts, tierOpts, timeSortOpts } from '~/constants'
+import { FieldType } from '~/interfaces'
+import { memo } from 'react'
 
 interface FormFilterProps {
   form: FormInstance
   onGetList: () => Promise<void>
+  loading?: boolean
 }
+
+const initialValues = { createAtOrder: 'asc', priceSortOrder: 'desc', tier: '', theme: '', price: [0, 200] }
 
 const ResetFilterIcon = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
@@ -22,8 +27,13 @@ const ResetFilterIcon = () => (
   </svg>
 )
 
-const FormFilter = ({ form, onGetList }: FormFilterProps) => {
+const FormFilter = ({ form, onGetList, loading }: FormFilterProps) => {
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+    onGetList()
+  }
+
+  const handleResetFilter = () => {
+    form.resetFields()
     onGetList()
   }
 
@@ -34,7 +44,7 @@ const FormFilter = ({ form, onGetList }: FormFilterProps) => {
       layout='vertical'
       labelCol={{ span: 8 }}
       style={{ maxWidth: 400 }}
-      initialValues={{ remember: true }}
+      initialValues={initialValues}
       onFinish={onFinish}
       autoComplete='off'
     >
@@ -47,68 +57,52 @@ const FormFilter = ({ form, onGetList }: FormFilterProps) => {
       </Form.Item>
 
       <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='price' label='PRICE'>
-        <Slider range min={0} max={200} defaultValue={[20, 50]} />
+        <Slider range min={0} max={200} />
       </Form.Item>
 
       <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='tier' label='TIER'>
-        <Select
-          className={formFilterSearchStyles.formSelect}
-          defaultValue='lucy'
-          disabled // TODO: Handle later
-          options={[
-            { value: 'jack', label: 'Jack' },
-            { value: 'lucy', label: 'Lucy' },
-            { value: 'Yiminghe', label: 'yiminghe' }
-          ]}
-        />
+        <Select className={formFilterSearchStyles.formSelect} options={tierOpts} />
       </Form.Item>
 
       <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='theme' label='THEME'>
+        <Select className={formFilterSearchStyles.formSelect} options={themeOpts} />
+      </Form.Item>
+
+      <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='createAtOrder' label='TIME'>
         <Select
           className={formFilterSearchStyles.formSelect}
-          defaultValue='lucy'
-          disabled // TODO: Handle later
-          options={[
-            { value: 'jack', label: 'Jack' },
-            { value: 'lucy', label: 'Lucy' },
-            { value: 'Yiminghe', label: 'yiminghe' }
-          ]}
+          defaultValue={timeSortOpts[0].value}
+          options={timeSortOpts}
+          disabled // TODO: check support multiple sort with jason-server
         />
       </Form.Item>
 
-      <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='time' label='TIME'>
+      <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='priceSortOrder' label='PRICE'>
         <Select
           className={formFilterSearchStyles.formSelect}
-          defaultValue='lucy'
-          disabled // TODO: Handle later
-          options={[
-            { value: 'jack', label: 'Jack' },
-            { value: 'lucy', label: 'Lucy' },
-            { value: 'Yiminghe', label: 'yiminghe' }
-          ]}
-        />
-      </Form.Item>
-
-      <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='price' label='PRICE'>
-        <Select
-          className={formFilterSearchStyles.formSelect}
-          defaultValue='lucy'
-          disabled // TODO: Handle later
-          options={[
-            { value: 'jack', label: 'Jack' },
-            { value: 'lucy', label: 'Lucy' },
-            { value: 'Yiminghe', label: 'yiminghe' }
-          ]}
+          defaultValue={priceSortOpts[0].value}
+          options={priceSortOpts}
         />
       </Form.Item>
 
       <Form.Item>
         <Flex align='center' gap={24}>
-          <Button className={formFilterSearchStyles.resetBtn} type='text'>
+          <Button
+            disabled={loading}
+            onClick={handleResetFilter}
+            className={formFilterSearchStyles.resetBtn}
+            type='text'
+          >
             <Icon component={ResetFilterIcon} />
             <Typography.Text>Reset Filter</Typography.Text>
           </Button>
-          <Button className={formFilterSearchStyles.submitBtn} color='secondary' type='primary' htmlType='submit'>
+          <Button
+            disabled={loading}
+            className={formFilterSearchStyles.submitBtn}
+            color='secondary'
+            type='primary'
+            htmlType='submit'
+          >
             Search
           </Button>
         </Flex>
@@ -117,4 +111,4 @@ const FormFilter = ({ form, onGetList }: FormFilterProps) => {
   )
 }
 
-export default FormFilter
+export default memo(FormFilter)

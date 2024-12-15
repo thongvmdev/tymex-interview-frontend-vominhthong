@@ -1,8 +1,7 @@
 import { Form } from 'antd'
 import { useCallback, useEffect, useReducer, useRef } from 'react'
-import { FieldType } from '~/interfaces/formFilter'
-import { IProduct } from '~/interfaces/products'
-import marketplaceService, { type GetMarketPlaceParams, type MarketPlacePaging } from '~/services/marketplace.service'
+import { FieldType, GetMarketPlaceParams, IProduct, MarketPlacePaging } from '~/interfaces'
+import marketplaceService from '~/services/marketplace.service'
 
 const initialState = {
   data: [] as IProduct[],
@@ -52,8 +51,8 @@ const reducer = (state: IState, action: Action) => {
 const useActions = () => {
   const [form] = Form.useForm<FieldType>()
   const [state, dispatch] = useReducer(reducer, initialState)
-  const { data, loading, pagination, isLoadMore } = state
   const latestState = useRef<IState>(state)
+  const { data, loading, pagination, isLoadMore } = state
 
   const setLoading = (loading: boolean) => dispatch({ type: 'SET_LOADING', payload: loading })
   const setData = (data: IProduct[]) => dispatch({ type: 'SET_DATA', payload: data })
@@ -62,9 +61,18 @@ const useActions = () => {
 
   const prepareParams = (): GetMarketPlaceParams => {
     const formData = form.getFieldsValue()
+    const supportSortFields = ['price', 'createdAt']
+
     const params = {
-      q: formData.title
+      q: formData.title,
+      tier: formData.tier,
+      theme: formData.theme,
+      _sort: supportSortFields[0], // TODO Check support multiple sort with jason-server
+      _order: formData.priceSortOrder,
+      price_gte: formData.price[0],
+      price_lte: formData.price[1]
     }
+
     return params
   }
 
@@ -105,11 +113,11 @@ const useActions = () => {
     const interval = setInterval(async () => {
       const params = prepareParams()
       const _latestState = latestState.current
-      const _newLimit = _latestState.pagination._page! * _latestState.pagination._limit!
+      const currentTotalItems = _latestState.pagination._page! * _latestState.pagination._limit!
 
-      const response = await marketplaceService.getList({ ...params, _page: 1, _limit: _newLimit })
+      const response = await marketplaceService.getList({ ...params, _page: 1, _limit: currentTotalItems })
       setData(response)
-    }, 10000)
+    }, 60000)
 
     return () => clearInterval(interval)
   }, [])

@@ -3,8 +3,8 @@ import Meta from 'antd/es/card/Meta'
 import Button from '~/components/atoms/Button'
 
 import productListStyles from './ProductList.module.scss'
-import { IProduct } from '~/interfaces/products'
 import { memo } from 'react'
+import { IProduct } from '~/interfaces'
 
 interface IProductProps {
   data: IProduct[]
