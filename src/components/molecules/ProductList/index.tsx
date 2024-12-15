@@ -1,10 +1,10 @@
-import { Avatar, Card, Empty, Flex, Spin } from 'antd'
-import Meta from 'antd/es/card/Meta'
+import { Empty, Flex, Spin } from 'antd'
 import Button from '~/components/atoms/Button'
 
 import productListStyles from './ProductList.module.scss'
 import { memo } from 'react'
 import { IProduct } from '~/interfaces'
+import ProductCard from '../ProductCard'
 
 interface IProductProps {
   data: IProduct[]
@@ -25,20 +25,7 @@ const ProductList = ({ data, onLoadMore, loading, isLoadMore }: IProductProps) =
           {!isEmpty ? (
             <>
               {data.map((product) => {
-                return (
-                  <Card
-                    style={{ width: 300 }}
-                    cover={
-                      <img alt='example' src='https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png' />
-                    }
-                  >
-                    <Meta
-                      avatar={<Avatar src='https://api.dicebear.com/7.x/miniavs/svg?seed=8' />}
-                      title={product.title}
-                      description='This is the description'
-                    />
-                  </Card>
-                )
+                return <ProductCard key={product.id} product={product} />
               })}
             </>
           ) : (

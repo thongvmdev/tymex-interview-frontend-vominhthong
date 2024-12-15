@@ -1,0 +1,119 @@
+.wrapper {
+  &:global {
+    &.ant-card {
+      padding: 16px;
+      width: 267px;
+      height: 365px;
+      background: rgba(58, 56, 65, 0.6);
+      border-radius: 10px;
+
+      .ant-card-cover {
+        width: 235px;
+        height: 233px;
+        flex-shrink: 0;
+        margin-bottom: 24px;
+      }
+
+      .ant-card-body {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.cardCoverImg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .coverImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .topLeft {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    color: white;
+    padding: 4px 12px;
+    text-align: center;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    border-radius: 4px;
+    background: rgba(49, 59, 69, 0.5);
+  }
+
+  .topRight {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+
+    span {
+      color: #fff;
+    }
+  }
+}
+
+.cardTitle {
+  color: #fff;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.cardEthCoin {
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+}
+
+.cardMeta {
+  &:global {
+    &.ant-card-meta {
+      align-items: center;
+
+      .ant-card-meta-detail .ant-card-meta-title {
+        color: #fff;
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px; /* 166.667% */
+      }
+    }
+  }
+}
+
+.authorAvatarContainer {
+  position: relative;
+
+  .authorAvatar {
+    &:global {
+      &.ant-avatar {
+        position: relative;
+        background-color: #fff;
+      }
+    }
+  }
+
+  .statusIndicator {
+    background: #17161a;
+    position: absolute;
+    bottom: 0px;
+    right: -1px;
+    border-radius: 50%;
+    padding: 2px;
+  }
+}
