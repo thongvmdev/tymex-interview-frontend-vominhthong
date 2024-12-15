@@ -34,17 +34,15 @@ const EthCoinSvg = () => (
   </svg>
 )
 
-const fakeUrl =
-  'https://images.pexels.com/photos/210243/pexels-photo-210243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-
 const ProductCard = ({ product }: IProductCardProps) => {
   return (
     <Card
+      hoverable
       bordered={false}
       className={productCardStyles.wrapper}
       cover={
-        <div className={productCardStyles.cardCoverImg}>
-          <img src={fakeUrl} alt='sample' className={productCardStyles.coverImg} />
+        <div style={{ background: product.backgroundColor }} className={productCardStyles.cardCoverImg}>
+          <img src={product.ethPath} alt='sample' className={productCardStyles.coverImg} />
           <div className={productCardStyles.topLeft}>{product.category}</div>
           <div className={productCardStyles.topRight}>
             <HeartFilled />

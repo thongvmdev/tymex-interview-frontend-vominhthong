@@ -2,6 +2,7 @@
 
 .marketplaceContent {
   padding: 40px;
+  gap: 40px;
 
   @include responsive('xl') {
     padding-top: 120px;

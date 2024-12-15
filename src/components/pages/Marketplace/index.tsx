@@ -12,12 +12,12 @@ const Marketplace = () => {
   return (
     <>
       <CoverImage />
-      <Row gutter={[40, 40]} className={markerPlaceStyles.marketplaceContent}>
-        <Col xs={24} lg={7}>
+      <Row className={markerPlaceStyles.marketplaceContent}>
+        <Col xs={24} md={24} lg={6} xl={7}>
           <FormFilter form={form} onGetList={getList} loading={loading} />
         </Col>
 
-        <Col xs={24} lg={17}>
+        <Col xs={24} md={24} lg={16} xl={16}>
           <Flex gap={40} vertical>
             <ProductCategory />
             <ProductList data={data} onLoadMore={handleLoadMore} loading={loading} isLoadMore={isLoadMore} />

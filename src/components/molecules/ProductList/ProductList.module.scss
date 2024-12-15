@@ -3,9 +3,13 @@
 .btnViewMore {
   &:global {
     &.ant-btn {
-      width: 326px;
+      width: 250px;
       height: 70px;
       padding: 23px 0px;
+
+      @include responsive('xl') {
+        width: 326px;
+      }
     }
   }
 }
@@ -26,4 +30,20 @@
       }
     }
   }
+}
+
+.productList {
+  max-height: 1600px;
+  margin-bottom: 55px;
+  overflow-y: auto;
+  justify-content: center;
+
+  @include responsive('lg') {
+    justify-content: flex-start;
+  }
+}
+
+.customScrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: yellow #777777;
 }

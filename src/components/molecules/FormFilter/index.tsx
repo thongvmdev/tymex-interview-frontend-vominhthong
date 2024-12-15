@@ -43,7 +43,7 @@ const FormFilter = ({ form, onGetList, loading }: FormFilterProps) => {
       name='filter-product'
       layout='vertical'
       labelCol={{ span: 8 }}
-      style={{ maxWidth: 400 }}
+      className={formFilterSearchStyles.wrapper}
       initialValues={initialValues}
       onFinish={onFinish}
       autoComplete='off'
@@ -86,7 +86,7 @@ const FormFilter = ({ form, onGetList, loading }: FormFilterProps) => {
       </Form.Item>
 
       <Form.Item>
-        <Flex align='center' gap={24}>
+        <Flex align='center' gap={12}>
           <Button
             disabled={loading}
             onClick={handleResetFilter}

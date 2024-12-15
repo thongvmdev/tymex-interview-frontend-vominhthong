@@ -40,6 +40,8 @@ export interface IProduct {
   tier: 'Basic' | 'Premium' | 'Deluxe'
   imageId: number // 1 -> 20 (integer)
   author: IAuthor
+  backgroundColor: string
+  ethPath: string
 }
 
 export interface FieldType {
