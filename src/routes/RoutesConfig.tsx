@@ -16,8 +16,7 @@ const RoutesConfig: Route[] = [
     element: MainLayout,
     children: [
       {
-        index: true,
-        path: 'Marketplace',
+        path: 'marketplace',
         element: Marketplace
       }
     ]

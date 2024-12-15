@@ -1,0 +1,94 @@
+@import '~/styles';
+
+.quickSearch {
+  &:global {
+    &.ant-input-affix-wrapper {
+      height: 44px;
+      padding: 10px 16px;
+      align-items: center;
+      flex-shrink: 0;
+      border-radius: 4px;
+      border: 1px solid $gray-color;
+      background-color: transparent;
+
+      .ant-input {
+        color: #fff;
+
+        &::placeholder {
+          color: $gray-color;
+        }
+      }
+    }
+  }
+}
+
+.prefixIconQuickSearch {
+  color: $gray-color;
+}
+
+.formItem {
+  :global {
+    .ant-form-item-label {
+      label {
+        color: $gray-color;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px; /* 150% */
+      }
+    }
+  }
+}
+
+.formSelect.formSelect {
+  height: 44px;
+
+  :global {
+    .ant-select-arrow {
+      color: #fff;
+    }
+
+    .ant-select-selector {
+      background: transparent;
+      border-color: $gray-color;
+      padding: 10px 16px;
+
+      .ant-select-selection-item {
+        color: #fff;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+      }
+    }
+  }
+}
+
+.resetBtn {
+  &:global {
+    &.ant-btn {
+      padding-left: 0;
+      padding-right: 0;
+      .ant-typography {
+        color: #fff;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px; /* 150% */
+      }
+    }
+  }
+}
+
+.submitBtn {
+  &:global {
+    &.ant-btn {
+      padding: 10px 56px 10px 57px;
+      width: 168px;
+      height: 44px;
+    }
+  }
+}

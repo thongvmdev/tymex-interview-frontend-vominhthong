@@ -15,7 +15,6 @@ const Routes = () => {
             {children.map(({ path: childPath, element: ChildComponent, index }) => {
               return (
                 <Route
-                  index={index}
                   key={childPath}
                   path={childPath}
                   element={<Suspense fallback={<Spin fullscreen />}>{<ChildComponent />}</Suspense>}
@@ -26,7 +25,7 @@ const Routes = () => {
         )
       })}
 
-      <Route path='*' element={<Navigate to={'/'} />} />
+      <Route path='*' element={<Navigate to={'/marketplace'} />} />
     </ReactRoutes>
   )
 }

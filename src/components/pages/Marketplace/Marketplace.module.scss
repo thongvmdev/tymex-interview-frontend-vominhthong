@@ -1,0 +1,12 @@
+@import '~/styles';
+
+.marketplaceContent {
+  padding: 40px;
+
+  @include responsive('xl') {
+    padding-top: 120px;
+    padding-left: 160px;
+    padding-right: 160px;
+    padding-bottom: 54px;
+  }
+}

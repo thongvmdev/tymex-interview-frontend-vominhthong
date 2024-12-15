@@ -1,0 +1,89 @@
+@import '~/styles';
+
+$normalColor: #ffffffa6;
+$activeColor: #ffffff;
+$baseBgColor: #101a30;
+
+.wrapper {
+  --bg-color: $baseBgColor;
+  --active-bg-color: $baseBgColor;
+  --tab-items: 2;
+
+  position: relative;
+
+  :global(.ant-tabs-nav) {
+    background-color: var(--bg-color);
+    margin-bottom: 0 !important;
+
+    @include responsive('md') {
+      padding: 0px 180px;
+    }
+
+    &::before {
+      border-bottom: unset !important;
+    }
+
+    :global(.ant-tabs-nav-wrap) {
+      justify-content: center;
+    }
+
+    :global(.ant-tabs-nav-operations) {
+      display: none;
+    }
+
+    :global(.ant-tabs-nav-list) {
+      align-items: center;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    :global(.ant-tabs-tab) {
+      margin-left: 0 !important;
+      color: $normalColor !important;
+      border-radius: unset !important;
+      border: unset !important;
+      flex: 1;
+      background: transparent;
+    }
+
+    :global(.ant-tabs-tab-btn) {
+      width: 100%;
+      min-width: 50px;
+      text-align: center;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 15px;
+      text-transform: uppercase;
+      white-space: normal;
+      word-wrap: break-word;
+
+      &:focus:not(:focus-visible) {
+        color: $normalColor !important;
+      }
+
+      @include responsive('md') {
+        font-size: 18px;
+        line-height: 25px;
+      }
+    }
+
+    :global(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+      color: $activeColor !important;
+      font-weight: 700;
+    }
+
+    :global(.ant-tabs-tab-active) {
+      background: var(--active-bg-color) !important;
+      border-bottom-color: transparent !important;
+    }
+  }
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: auto;
+}
