@@ -19,7 +19,7 @@ const Marketplace = () => {
 
         <Col xs={24} md={24} lg={16} xl={16}>
           <Flex gap={40} vertical>
-            <ProductCategory />
+            <ProductCategory onGetList={getList} />
             <ProductList data={data} onLoadMore={handleLoadMore} loading={loading} isLoadMore={isLoadMore} />
           </Flex>
         </Col>

@@ -12,7 +12,9 @@ const Routes = () => {
 
         return (
           <Route key={path} element={<Suspense fallback={<Spin fullscreen />}>{<Component />}</Suspense>} path={path}>
-            {children.map(({ path: childPath, element: ChildComponent, index }) => {
+            <Route index element={<Navigate to={'/marketplace'} replace />} />
+
+            {children.map(({ path: childPath, element: ChildComponent }) => {
               return (
                 <Route
                   key={childPath}

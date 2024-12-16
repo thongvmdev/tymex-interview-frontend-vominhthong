@@ -1,3 +1,10 @@
 $primary-color: #da458f;
 $gray-color: #8e8e8e;
 $secondary-background-gradient: linear-gradient(91deg, #da458f -6%, #da34dd 113.05%);
+$secondary-background-gradient-de-active: linear-gradient(
+  91deg,
+  rgba(218, 69, 143, 0.4) -6%,
+  rgba(218, 52, 221, 0.4) 113.05%
+);
+
+$tertiary-background-gradient: linear-gradient(81deg, rgba(218, 69, 143, 0.4) 7.2%, rgba(218, 52, 221, 0) 52.38%);

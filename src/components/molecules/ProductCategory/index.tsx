@@ -1,28 +1,43 @@
 import { Tabs, TabsProps } from 'antd'
 
-// import productCategoryStyles from './ProductCategory.module.scss'
+import productCategoryStyles from './ProductCategory.module.scss'
 import classNames from 'classnames'
+import { categoryOpts } from '~/constants'
+import Icon from '@ant-design/icons'
+import { memo } from 'react'
 
-type ITabsProps = TabsProps
+interface IProductCategoryProps extends TabsProps {
+  onGetList: (category?: string) => Promise<void>
+}
 
-const ProductCategory = ({ className, ...props }: ITabsProps) => {
+const ProductCategory = ({ onGetList, className, ...props }: IProductCategoryProps) => {
   return (
     <Tabs
       {...props}
-      // className={classNames(productCategoryStyles.wrapper, className)}
-      items={new Array(30).fill(null).map((_, i) => {
-        const id = String(i)
-        return {
-          label: <span style={{ color: '#FFF' }}>{`Tab-${id}`}</span>,
-          key: id,
-          disabled: i === 28
-          // children: `Content of tab ${id}`
-        }
-      })}
-      // onChange={handleTabChange}
-      // activeKey={activeSection}
+      tabBarGutter={24}
+      onChange={(category) => onGetList(category)}
+      defaultActiveKey={categoryOpts[0].value}
+      className={classNames(productCategoryStyles.wrapper, className)}
+      items={categoryOpts.map(({ value, label }) => ({
+        label,
+        key: value
+      }))}
+      more={{
+        icon: (
+          <Icon
+            component={() => (
+              <svg xmlns='http://www.w3.org/2000/svg' width='31' height='34' viewBox='0 0 31 34' fill='none'>
+                <path
+                  d='M15.8636 14.9643L22.8864 22.6667L24.5417 20.8512L15.8636 11.3334L7.18558 20.8512L8.84087 22.6667L15.8636 14.9643Z'
+                  fill='#DA458F'
+                />
+              </svg>
+            )}
+          />
+        )
+      }}
     />
   )
 }
 
-export default ProductCategory
+export default memo(ProductCategory)
