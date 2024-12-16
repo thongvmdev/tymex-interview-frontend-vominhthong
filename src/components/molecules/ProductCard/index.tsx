@@ -12,7 +12,7 @@ interface IProductCardProps {
 
 const EthCoinSvg = () => (
   <svg xmlns='http://www.w3.org/2000/svg' width='8' height='14' viewBox='0 0 8 14' fill='none'>
-    <g clip-path='url(#clip0_274_19)'>
+    <g clipPath='url(#clip0_274_19)'>
       <path
         d='M3.99878 0.538452L3.91144 0.832863V9.37598L3.99878 9.46244L7.99759 7.11838L3.99878 0.538452Z'
         fill='#C1CCF7'
