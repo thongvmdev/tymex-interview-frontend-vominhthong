@@ -2,88 +2,70 @@
 
 $normalColor: #ffffffa6;
 $activeColor: #ffffff;
-$baseBgColor: #101a30;
 
 .wrapper {
-  --bg-color: $baseBgColor;
-  --active-bg-color: $baseBgColor;
-  --tab-items: 2;
+  &:global {
+    &.ant-tabs {
+      position: relative;
 
-  position: relative;
+      :global(.ant-tabs-nav) {
+        margin-bottom: 0 !important;
 
-  :global(.ant-tabs-nav) {
-    background-color: var(--bg-color);
-    margin-bottom: 0 !important;
+        &::before {
+          border-bottom: unset !important;
+        }
 
-    @include responsive('md') {
-      padding: 0px 180px;
-    }
+        :global(.ant-tabs-nav-wrap) {
+          justify-content: flex-start;
+        }
 
-    &::before {
-      border-bottom: unset !important;
-    }
+        :global(.ant-tabs-nav-operations .ant-tabs-nav-more) {
+          border-radius: 4px;
+          background: $tertiary-background-gradient;
+        }
 
-    :global(.ant-tabs-nav-wrap) {
-      justify-content: center;
-    }
+        :global(.ant-tabs-nav-list) {
+          align-items: stretch;
+        }
 
-    :global(.ant-tabs-nav-operations) {
-      display: none;
-    }
+        :global(.ant-tabs-tab) {
+          color: $normalColor;
+          border-radius: 4px;
+          border: unset;
+          flex: 1;
+          padding: 10px 16px;
+          border-radius: 4px;
+          background: $secondary-background-gradient-de-active;
+        }
 
-    :global(.ant-tabs-nav-list) {
-      align-items: center;
-      align-items: stretch;
-      width: 100%;
-    }
+        :global(.ant-tabs-tab-btn) {
+          text-align: center;
+          color: #fff;
+          font-family: Inter;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 24px; /* 150% */
 
-    :global(.ant-tabs-tab) {
-      margin-left: 0 !important;
-      color: $normalColor !important;
-      border-radius: unset !important;
-      border: unset !important;
-      flex: 1;
-      background: transparent;
-    }
+          &:focus:not(:focus-visible) {
+            color: $normalColor;
+          }
+        }
 
-    :global(.ant-tabs-tab-btn) {
-      width: 100%;
-      min-width: 50px;
-      text-align: center;
-      font-size: 13px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 15px;
-      text-transform: uppercase;
-      white-space: normal;
-      word-wrap: break-word;
+        :global(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+          color: $activeColor;
+          font-weight: 700;
+        }
 
-      &:focus:not(:focus-visible) {
-        color: $normalColor !important;
+        :global(.ant-tabs-tab-active) {
+          background: $secondary-background-gradient;
+          border-bottom-color: transparent;
+        }
+
+        :global(.ant-tabs-ink-bar) {
+          display: none;
+        }
       }
-
-      @include responsive('md') {
-        font-size: 18px;
-        line-height: 25px;
-      }
-    }
-
-    :global(.ant-tabs-tab-active .ant-tabs-tab-btn) {
-      color: $activeColor !important;
-      font-weight: 700;
-    }
-
-    :global(.ant-tabs-tab-active) {
-      background: var(--active-bg-color) !important;
-      border-bottom-color: transparent !important;
     }
   }
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  height: auto;
 }

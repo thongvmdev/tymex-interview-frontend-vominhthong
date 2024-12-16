@@ -10,7 +10,7 @@ import { memo } from 'react'
 
 interface FormFilterProps {
   form: FormInstance
-  onGetList: () => Promise<void>
+  onGetList: (category?: string) => Promise<void>
   loading?: boolean
 }
 

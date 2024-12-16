@@ -76,19 +76,22 @@ const useActions = () => {
     return params
   }
 
-  const getList = useCallback(async () => {
-    try {
-      setLoading(true)
-      const params = prepareParams()
+  const getList = useCallback(
+    async (category?: string) => {
+      try {
+        setLoading(true)
+        const params = prepareParams()
 
-      const response = await marketplaceService.getList({ ...initialState.pagination, ...params })
-      setState({ data: response, pagination: initialState.pagination })
-    } catch (error) {
-      console.log('🚀 ~ getList ~ error:', error)
-    } finally {
-      setLoading(false)
-    }
-  }, [pagination])
+        const response = await marketplaceService.getList({ ...initialState.pagination, ...params, category })
+        setState({ data: response, pagination: initialState.pagination })
+      } catch (error) {
+        console.log('🚀 ~ getList ~ error:', error)
+      } finally {
+        setLoading(false)
+      }
+    },
+    [pagination]
+  )
 
   const handleLoadMore = useCallback(async () => {
     try {

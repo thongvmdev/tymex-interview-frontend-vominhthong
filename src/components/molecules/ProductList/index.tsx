@@ -20,7 +20,9 @@ const ProductList = ({ data, onLoadMore, loading, isLoadMore }: IProductProps) =
   return (
     <div className={productListStyles.wrapper}>
       {loading ? (
-        <Spin className={productListStyles.spin} spinning={loading} style={{ minHeight: '60vh' }} />
+        <Flex align='center' className={productListStyles.loadingWrapper} justify='center'>
+          <Spin className={productListStyles.spin} spinning={loading} />
+        </Flex>
       ) : (
         <>
           {!isEmpty ? (
@@ -46,6 +48,7 @@ const ProductList = ({ data, onLoadMore, loading, isLoadMore }: IProductProps) =
           </Button>
         </Flex>
       )}
+      {/* // TODO: need to custom jason-server to return totals items for handle disable load more */}
     </div>
   )
 }

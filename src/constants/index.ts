@@ -1,6 +1,7 @@
 type Option = { value: string; label: string }
 
 export const categoryOpts: Option[] = [
+  { value: '', label: 'All' },
   { value: 'Upper Body', label: 'Upper Body' },
   { value: 'Lower Body', label: 'Lower Body' },
   { value: 'Hat', label: 'Hat' },
