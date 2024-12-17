@@ -37,6 +37,7 @@ const EthCoinSvg = () => (
 const ProductCard = ({ product }: IProductCardProps) => {
   return (
     <Card
+      data-testid='product-card'
       hoverable
       bordered={false}
       className={productCardStyles.wrapper}

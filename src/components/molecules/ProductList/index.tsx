@@ -14,14 +14,14 @@ interface IProductProps {
   isLoadMore: boolean
 }
 
-const ProductList = ({ data, onLoadMore, loading, isLoadMore }: IProductProps) => {
+const ProductList = ({ data, onLoadMore, isLoadMore, loading }: IProductProps) => {
   const isEmpty = !data?.length
 
   return (
     <div className={productListStyles.wrapper}>
       {loading ? (
         <Flex align='center' className={productListStyles.loadingWrapper} justify='center'>
-          <Spin className={productListStyles.spin} spinning={loading} />
+          <Spin data-testid='spinner-product-list' className={productListStyles.spin} spinning={loading} />
         </Flex>
       ) : (
         <>
@@ -36,7 +36,7 @@ const ProductList = ({ data, onLoadMore, loading, isLoadMore }: IProductProps) =
               })}
             </Flex>
           ) : (
-            <Empty className={productListStyles.empty} />
+            <Empty className={productListStyles.empty} data-testid='empty-product-list' />
           )}
         </>
       )}
