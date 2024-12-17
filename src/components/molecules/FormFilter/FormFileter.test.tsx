@@ -17,7 +17,7 @@ describe('FormFilter', () => {
     return <FormFilter form={form} onGetList={mockOnGetList} />
   }
 
-  it('renders correctly', () => {
+  test('renders correctly', () => {
     render(<FormFilterWrapper />)
 
     expect(screen.getByPlaceholderText('Quick Search')).toBeInTheDocument()
@@ -30,7 +30,7 @@ describe('FormFilter', () => {
     expect(screen.getByText('Search')).toBeInTheDocument()
   })
 
-  it('should call onGetList when the form is submitted', async () => {
+  test('should call onGetList when the form is submitted', async () => {
     render(<FormFilterWrapper />)
 
     const submitButton = screen.getByText('Search')
@@ -39,7 +39,7 @@ describe('FormFilter', () => {
     await waitFor(() => expect(mockOnGetList).toHaveBeenCalledTimes(1))
   })
 
-  it('should trigger form.resetFields and onGetList when click Reset Filter button', async () => {
+  test('should trigger form.resetFields and onGetList when click Reset Filter button', async () => {
     render(<FormFilterWrapper />)
 
     fireEvent.click(screen.getByText('Reset Filter'))

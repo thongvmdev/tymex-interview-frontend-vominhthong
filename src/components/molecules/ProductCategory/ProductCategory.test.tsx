@@ -10,7 +10,7 @@ describe('ProductCategory Component', () => {
     return render(<ProductCategory onGetList={mockOnGetList} {...props} />)
   }
 
-  it('should render all category tabs correctly', () => {
+  test('should render all category tabs correctly', () => {
     setup()
 
     categoryOpts.forEach(({ label }) => {
@@ -21,7 +21,7 @@ describe('ProductCategory Component', () => {
     expect(defaultActiveTab.closest('.ant-tabs-tab-active')).toBeInTheDocument()
   })
 
-  it('should call onGetList with the correct category key when a tab is clicked', () => {
+  test('should call onGetList with the correct category key when a tab is clicked', () => {
     setup()
 
     const secondTab = screen.getByText(categoryOpts[1].label)

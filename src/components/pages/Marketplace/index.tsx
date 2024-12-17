@@ -1,13 +1,15 @@
-import { Col, Flex, Row } from 'antd'
+import { Col, Flex, Form, Row } from 'antd'
 import CoverImage from '~/components/molecules/CoverImage'
 import FormFilter from '~/components/molecules/FormFilter'
 import markerPlaceStyles from './Marketplace.module.scss'
 import ProductList from '~/components/molecules/ProductList'
 import ProductCategory from '~/components/molecules/ProductCategory'
 import useActions from './hooks/useActions'
+import { FieldType } from '~/interfaces'
 
 const Marketplace = () => {
-  const { data, loading, form, handleLoadMore, isLoadMore, getList } = useActions()
+  const [form] = Form.useForm<FieldType>()
+  const { data, loading, handleLoadMore, isLoadMore, getList } = useActions(form)
 
   return (
     <>

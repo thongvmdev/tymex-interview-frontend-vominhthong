@@ -2,7 +2,7 @@ import qs from 'querystring'
 
 import axios from 'axios'
 
-export const API_ROOT = import.meta.env.VITE_API_ROOT
+export const API_ROOT = 'http://localhost:5005'
 
 const httpClient = axios.create({
   baseURL: API_ROOT,
