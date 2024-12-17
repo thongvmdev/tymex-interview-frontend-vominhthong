@@ -3,7 +3,7 @@ import coverImage from '~/assets/images/cover-image.jpg'
 
 const CoverImage = () => {
   return (
-    <div className={coverImageStyles.coverImageContainer}>
+    <div data-testid='cover-image' className={coverImageStyles.coverImageContainer}>
       <img src={coverImage} alt={'nft-cvi'} className={coverImageStyles.coverImage} />
     </div>
   )

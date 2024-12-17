@@ -1,6 +1,6 @@
-import { Form } from 'antd'
+import { FormInstance } from 'antd'
 import { useCallback, useEffect, useReducer, useRef } from 'react'
-import { FieldType, GetMarketPlaceParams, IProduct, MarketPlacePaging } from '~/interfaces'
+import { GetMarketPlaceParams, IProduct, MarketPlacePaging } from '~/interfaces'
 import marketplaceService from '~/services/marketplace.service'
 
 const initialState = {
@@ -48,8 +48,7 @@ const reducer = (state: IState, action: Action) => {
   }
 }
 
-const useActions = () => {
-  const [form] = Form.useForm<FieldType>()
+const useActions = (form: FormInstance) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const latestState = useRef<IState>(state)
   const { data, loading, pagination, isLoadMore } = state

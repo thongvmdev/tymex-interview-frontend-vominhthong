@@ -18,7 +18,7 @@ const ProductList = ({ data, onLoadMore, isLoadMore, loading }: IProductProps) =
   const isEmpty = !data?.length
 
   return (
-    <div className={productListStyles.wrapper}>
+    <div data-testid='product-list' className={productListStyles.wrapper}>
       {loading ? (
         <Flex align='center' className={productListStyles.loadingWrapper} justify='center'>
           <Spin data-testid='spinner-product-list' className={productListStyles.spin} spinning={loading} />
@@ -43,7 +43,13 @@ const ProductList = ({ data, onLoadMore, isLoadMore, loading }: IProductProps) =
 
       {!isEmpty && !loading && (
         <Flex justify='center'>
-          <Button loading={isLoadMore} onClick={onLoadMore} className={productListStyles.btnViewMore} color='secondary'>
+          <Button
+            data-testid='view-more-btn'
+            loading={isLoadMore}
+            onClick={onLoadMore}
+            className={productListStyles.btnViewMore}
+            color='secondary'
+          >
             View More
           </Button>
         </Flex>

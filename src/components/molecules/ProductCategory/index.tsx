@@ -13,6 +13,7 @@ interface IProductCategoryProps extends TabsProps {
 const ProductCategory = ({ onGetList, className, ...props }: IProductCategoryProps) => {
   return (
     <Tabs
+      data-testid='product-category'
       {...props}
       tabBarGutter={24}
       onChange={(category) => onGetList(category)}
