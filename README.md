@@ -1,50 +1,103 @@
-# React + TypeScript + Vite
+# TymeX Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Thank you for giving me the opportunity to work on this assignment. Below, I have outlined the tasks I completed, including the demo video and demo link. Please feel free to review and share your feedback.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The project utilizes the following technologies:
 
-## Expanding the ESLint configuration
+- **React 18** with **TypeScript**
+- **Vite**
+- **SWC**
+- **Ant Design**
+- **SCSS Modules**
+- **Axios**
+- **React Router v6**
+- **ESLint** and **Prettier**
+- **Jest** with **React Testing Library**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+### Marketplace Page
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+The main page is implemented in **Marketplace**, displaying a list of products.
+
+### Product Listing
+
+- **ProductList**
+- **ProductCard**
+
+### Product Filtering
+
+- **FormFilter**
+
+### Category Tabs
+
+- **ProductCategory**
+
+### Layout Components
+
+- **Header**
+
+- **Footer**
+
+- **MainLayout**
+
+### Testing
+
+- Test configurations in `jest.config.ts` and `jest.setup.ts`.
+- Sample tests like `ProductCard.test.tsx`.
+
+## Getting Started
+
+To run the project locally:
+
+```sh
+yarn install
+yarn dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Build the project for production:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```sh
+yarn build:prod
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Run the tests:
+
+```sh
+yarn test
+```
+
+## Folder Structure
+
+The workspace has the following structure:
+
+```
+tyme-assginment/
+├── __mocks__/
+├── coverage/
+├── public/
+│   └── images/
+├── src/
+│   ├── assets/
+│   │   ├── fonts/
+│   │   └── images/
+│   ├── components/
+│   │   ├── atoms/
+│   │   ├── layouts/
+│   │   ├── molecules/
+│   │   └── pages/
+│   ├── constants/
+│   ├── interfaces/
+│   ├── routes/
+│   ├── services/
+│   ├── styles/
+│   └── utils/
+├── jest.config.ts
+├── jest.setup.ts
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
 ```
