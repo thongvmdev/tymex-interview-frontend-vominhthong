@@ -7,6 +7,7 @@ import formFilterSearchStyles from './FormFilter.module.scss'
 import { priceSortOpts, themeOpts, tierOpts, timeSortOpts } from '~/constants'
 import { FieldType } from '~/interfaces'
 import { memo } from 'react'
+import classNames from 'classnames'
 
 interface FormFilterProps {
   form: FormInstance
@@ -28,7 +29,7 @@ const ResetFilterIcon = () => (
 )
 
 const FormFilter = ({ form, onGetList, loading }: FormFilterProps) => {
-  const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+  const onFinish: FormProps<FieldType>['onFinish'] = (_) => {
     onGetList()
   }
 
@@ -57,7 +58,17 @@ const FormFilter = ({ form, onGetList, loading }: FormFilterProps) => {
       </Form.Item>
 
       <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='price' label='PRICE'>
-        <Slider range min={0} max={200} />
+        <Slider
+          range
+          min={0}
+          max={200}
+          rootClassName={formFilterSearchStyles.rangePrice}
+          tooltip={{
+            placement: 'top',
+            rootClassName: formFilterSearchStyles.rangePriceTooltip,
+            formatter: (value) => `${value} ETH`
+          }}
+        />
       </Form.Item>
 
       <Form.Item<FieldType> className={formFilterSearchStyles.formItem} name='tier' label='TIER'>
