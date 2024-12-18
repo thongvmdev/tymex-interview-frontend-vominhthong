@@ -107,6 +107,10 @@ tyme-assginment/
 └── README.md
 ```
 
+## Code Coverage
+
+After running the tests, a code coverage report is generated in the coverage directory. You can open the index.html file inside lcov-report to view the detailed coverage report in your browser.
+
 ## Demo link
 
 - https://tymex-396ee.web.app/marketplace
