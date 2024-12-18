@@ -105,3 +105,52 @@
     }
   }
 }
+
+.rangePrice {
+  &:global {
+    &.ant-slider {
+      .ant-slider-track {
+        background: $secondary-background-gradient;
+      }
+
+      .ant-slider-handle {
+        &.ant-slider-handle-1,
+        &.ant-slider-handle-2 {
+          transform: translate(-110%, -50%) !important;
+        }
+
+        &::after {
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="url(%23paint0_radial_1_290)"/><circle cx="8" cy="8" r="8" fill="url(%23paint1_radial_1_290)"/><circle cx="8" cy="8" r="8" fill="url(%23paint2_radial_1_290)"/><defs><radialGradient id="paint0_radial_1_290" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8 8) rotate(90) scale(8)"><stop stop-color="%23F643E4"/><stop offset="1" stop-color="%23FF54EE" stop-opacity="0"/></radialGradient><radialGradient id="paint1_radial_1_290" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8 8) rotate(90) scale(8)"><stop stop-color="%23F643E4"/><stop offset="1" stop-color="%23FF54EE" stop-opacity="0"/></radialGradient><radialGradient id="paint2_radial_1_290" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8 8) rotate(90) scale(8)"><stop stop-color="white"/><stop offset="1" stop-color="%23FF54EE" stop-opacity="0"/></radialGradient></defs></svg>');
+
+          background-color: unset;
+          background-size: cover;
+          background-repeat: no-repeat;
+          box-shadow: 0 0 0 1px #fff;
+          width: 20px;
+          height: 20px;
+        }
+
+        &:focus::after,
+        &:hover::after {
+          outline: 7px solid rgb(218 64 163 / 49%);
+        }
+      }
+    }
+  }
+}
+
+.rangePriceTooltip {
+  &:global {
+    &.ant-tooltip {
+      .ant-tooltip-inner {
+        background: $secondary-background-gradient;
+      }
+
+      .ant-tooltip-arrow {
+        &::before {
+          background: $secondary-background-gradient;
+        }
+      }
+    }
+  }
+}
