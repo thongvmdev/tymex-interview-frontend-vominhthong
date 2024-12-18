@@ -1,6 +1,6 @@
 # TymeX Assignment
 
-Thank you for giving me the opportunity to work on this assignment. Below, I have outlined the tasks I completed, including the demo video and demo link. Please feel free to review and share your feedback.
+Thank you for giving me the opportunity to work on this assignment. Below, I have outlined the tasks I completed, including demo link. Please feel free to review and share your feedback.
 
 ## Tech Stack
 
@@ -42,6 +42,11 @@ The main page is implemented in **Marketplace**, displaying a list of products.
 - **Footer**
 
 - **MainLayout**
+
+### Responsive Design
+
+- Utilizes SCSS mixins from media.scss for responsiveness.
+- Breakpoints defined in media.scss ensure compatibility across devices.
 
 ### Testing
 
@@ -101,3 +106,7 @@ tyme-assginment/
 ├── vite.config.ts
 └── README.md
 ```
+
+## Demo link
+
+- https://tymex-396ee.web.app/marketplace
