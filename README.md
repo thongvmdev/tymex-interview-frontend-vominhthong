@@ -53,6 +53,21 @@ The main page is implemented in **Marketplace**, displaying a list of products.
 - Test configurations in `jest.config.ts` and `jest.setup.ts`.
 - Sample tests like `ProductCard.test.tsx`.
 
+### Capabilities
+
+- **User must have data** : Deploy a json-server on Render to provide the data.
+- **User can search and filter** results based on one criteria.
+- **User can see more (load more)** data.
+
+- **System handling** when:
+
+  - Data is being loaded.
+  - No data is returned (empty state).
+  - Other common exceptions.
+
+- **System can auto-refresh** data after 60 seconds.
+- **Search supports multi-criteria** and filtering by category.
+
 ## Getting Started
 
 To run the project locally:
