@@ -2,6 +2,10 @@
 
 Thank you for giving me the opportunity to work on this assignment. Below, I have outlined the tasks I completed, including demo link. Please feel free to review and share your feedback.
 
+## Demo link
+
+- https://tymex-396ee.web.app/marketplace
+
 ## Tech Stack
 
 The project utilizes the following technologies:
@@ -24,24 +28,24 @@ The main page is implemented in **Marketplace**, displaying a list of products.
 
 ### Product Listing
 
-- **ProductList**
-- **ProductCard**
+- ProductList
+- ProductCard
 
 ### Product Filtering
 
-- **FormFilter**
+- FormFilter
 
 ### Category Tabs
 
-- **ProductCategory**
+- ProductCategory
 
 ### Layout Components
 
-- **Header**
+- Header
 
-- **Footer**
+- Footer
 
-- **MainLayout**
+- MainLayout
 
 ### Responsive Design
 
@@ -55,18 +59,27 @@ The main page is implemented in **Marketplace**, displaying a list of products.
 
 ### Capabilities
 
-- **User must have data** : Deploy a json-server on Render to provide the data.
-- **User can search and filter** results based on one criteria.
-- **User can see more (load more)** data.
+- User must have data: Deploy a json-server on Render to provide the data.
+- User can search and filter results based on one criteria.
+- User can see more (load more) data.
 
-- **System handling** when:
+- System handling when:
 
   - Data is being loaded.
   - No data is returned (empty state).
   - Other common exceptions.
 
-- **System can auto-refresh** data after 60 seconds.
-- **Search supports multi-criteria** and filtering by category.
+- System can auto-refresh data after 60 seconds.
+- Search supports multi-criteria and filtering by category.
+
+## Deployment
+
+- Firebase Hosting
+- Render
+
+## Code Coverage
+
+- After running the tests, a code coverage report is generated in the coverage directory. You can open the index.html file inside lcov-report to view the detailed coverage report in your browser.
 
 ## Getting Started
 
@@ -121,15 +134,3 @@ tyme-assginment/
 ├── vite.config.ts
 └── README.md
 ```
-
-## Deployment
-
-- **Firebase Hosting**
-
-## Code Coverage
-
-- After running the tests, a code coverage report is generated in the coverage directory. You can open the index.html file inside lcov-report to view the detailed coverage report in your browser.
-
-## Demo link
-
-- https://tymex-396ee.web.app/marketplace
